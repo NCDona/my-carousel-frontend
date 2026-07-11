@@ -17,34 +17,34 @@
         nav { display: flex; gap: 15px; }
         nav a { text-decoration: none; color: #726259; font-size: 13px; }
 
-        .hero-section { text-align: center; margin: 40px 0; }
+        .hero-section { text-align: center; margin: 40px 0; position: relative; }
         .main-title h1 { font-family: 'Noto Serif TC', serif; font-size: 32px; color: #5c4a42; margin-bottom: 10px; }
         .tagline { font-family: 'Cinzel', serif; font-size: 14px; color: #b18f6a; letter-spacing: 3px; }
-        
         .mobile-break { display: inline; }
         @media (max-width: 768px) { .mobile-break { display: block; } }
 
+        /* 輪播區域 */
         .hero-carousel { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; position: relative; border: 4px solid #fff; margin-top: 20px; }
         .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease; }
         .carousel-slide { min-width: 100%; height: 100%; }
         .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.5); padding: 15px 12px; cursor: pointer; color: #b18f6a; z-index: 10; border-radius: 5px; }
+        .left-arrow { left: 10px; }
+        .right-arrow { right: 10px; }
 
+        /* 故事區 */
         .section-title { font-size: 22px; margin: 40px 0 20px; text-align: center; color: #5c4a42; }
-        
-        /* 浪漫相簿標題區加上箭頭 */
-        .gallery-header { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .gallery-nav { color: #b18f6a; font-size: 20px; cursor: pointer; }
-
         .story-card { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 20px; border: 1px solid rgba(228, 203, 189, 0.3); }
         .story-info { display: flex; flex-direction: column; gap: 15px; padding-bottom: 20px; border-bottom: 1px solid rgba(228, 203, 189, 0.3); margin-bottom: 20px; }
         .info-item { display: flex; align-items: center; gap: 12px; }
         .info-icon { color: #b18f6a; width: 25px; text-align: center; }
-        .info-text h4 { font-size: 11px; color: #a8998a; text-transform: uppercase; }
         .info-text p { font-size: 14px; color: #5c4a42; font-weight: 500; }
-        
         .story-frame { width: 100%; height: 250px; margin-top: 20px; border-radius: 12px; overflow: hidden; }
         .story-frame img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* 相簿區 */
+        .gallery-header { position: relative; display: flex; justify-content: center; align-items: center; margin: 40px 0 20px; }
+        .gallery-nav-icons { position: absolute; right: 0; display: flex; gap: 15px; color: #b18f6a; cursor: pointer; font-size: 18px; }
         .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 40px; }
         .gallery-item { border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
@@ -52,7 +52,7 @@
         @media (min-width: 768px) {
             .hero-carousel { height: 500px; }
             .story-card { display: grid; grid-template-columns: 250px 1fr 250px; gap: 30px; align-items: center; }
-            .story-info { border-bottom: none; border-right: 1px solid rgba(228, 203, 189, 0.3); padding-bottom: 0; margin-bottom: 0; padding-right: 20px; }
+            .story-info { border-bottom: none; border-right: 1px solid rgba(228, 203, 189, 0.3); padding-right: 20px; }
             .gallery-grid { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
@@ -62,22 +62,21 @@
     <div class="container">
         <header>
             <a href="#" class="logo">K <span>&</span> N</a>
-            <nav>
-                <a href="#story">我們的故事</a>
-                <a href="#gallery">相簿</a>
-            </nav>
+            <nav><a href="#story">我們的故事</a><a href="#gallery">相簿</a></nav>
         </header>
 
         <section class="hero-section">
             <div class="main-title"><h1>何冠霖 ＆ 楊念臻</h1></div>
             <div class="tagline">UNDER THE AURORA, <span class="mobile-break"></span> WE PROMISED</div>
             <div class="hero-carousel">
+                <div class="arrow left-arrow" onclick="move(-1)"><i class="fa-solid fa-chevron-left"></i></div>
                 <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide"><img src="./pic1.jpg" alt="1"></div>
-                    <div class="carousel-slide"><img src="./pic2.jpg" alt="2"></div>
-                    <div class="carousel-slide"><img src="./pic3.jpg" alt="3"></div>
-                    <div class="carousel-slide"><img src="./pic4.jpg" alt="4"></div>
+                    <div class="carousel-slide"><img src="./pic1.jpg"></div>
+                    <div class="carousel-slide"><img src="./pic2.jpg"></div>
+                    <div class="carousel-slide"><img src="./pic3.jpg"></div>
+                    <div class="carousel-slide"><img src="./pic4.jpg"></div>
                 </div>
+                <div class="arrow right-arrow" onclick="move(1)"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
         </section>
 
@@ -87,9 +86,7 @@
                 <div class="story-info">
                     <div class="info-item">
                         <div class="info-icon"><i class="fa-solid fa-heart"></i></div>
-                        <div class="info-text">
-                            <p style="font-size: 16px; font-weight: 600; color: #5c4a42;">何冠霖 ＆ 楊念臻</p>
-                        </div>
+                        <div class="info-text"><p style="font-size: 16px; font-weight: 600;">何冠霖 ＆ 楊念臻</p></div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon"><i class="fa-solid fa-calendar-days"></i></div>
@@ -97,44 +94,39 @@
                     </div>
                     <div class="info-item">
                         <div class="info-icon"><i class="fa-solid fa-gift"></i></div>
-                        <div class="info-text">
-                            <h4>分享喜悅</h4>
-                            <p style="line-height: 1.4; margin-top: 2px;">
-                                卡柏蒂 CUPETIT<br>
-                                <span style="color: #b18f6a;">&lt;極光之約&gt;</span>
-                            </p>
-                        </div>
+                        <div class="info-text"><h4>分享喜悅</h4><p>卡柏蒂 CUPETIT<br><span style="color: #b18f6a;">&lt;極光之約&gt;</span></p></div>
                     </div>
                 </div>
                 <div class="story-content">
                     <p>人們說，看見極光就會幸福一輩子。於是在阿拉斯加的極光見證下，我們許下了一生的承諾。<br><br>這份喜餅承載著我們的浪漫，願與您分享這份遠自天際的幸福與美好。</p>
                 </div>
-                <div class="story-frame"><img src="./pic5.jpg" alt="故事照"></div>
+                <div class="story-frame"><img src="./pic5.jpg"></div>
             </div>
         </section>
 
         <section id="gallery">
-            <!-- 這裡新增了箭頭 -->
             <div class="gallery-header">
-                <div class="gallery-nav"><i class="fa-solid fa-chevron-left"></i></div>
-                <h2 class="section-title" style="margin: 40px 0;">浪漫相簿</h2>
-                <div class="gallery-nav"><i class="fa-solid fa-chevron-right"></i></div>
+                <h2 class="section-title">相簿</h2>
+                <div class="gallery-nav-icons">
+                    <i class="fa-solid fa-angles-left"></i> 
+                    <i class="fa-solid fa-play"></i>
+                </div>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="./pic1.jpg" alt="1"></div>
-                <div class="gallery-item"><img src="./pic2.jpg" alt="2"></div>
-                <div class="gallery-item"><img src="./pic3.jpg" alt="3"></div>
-                <div class="gallery-item"><img src="./pic4.jpg" alt="4"></div>
+                <div class="gallery-item"><img src="./pic1.jpg"></div>
+                <div class="gallery-item"><img src="./pic2.jpg"></div>
+                <div class="gallery-item"><img src="./pic3.jpg"></div>
+                <div class="gallery-item"><img src="./pic4.jpg"></div>
             </div>
         </section>
     </div>
 
     <script>
         let index = 0;
-        setInterval(() => {
-            index = (index + 1) % 4;
+        function move(step) {
+            index = (index + step + 4) % 4;
             document.getElementById('carouselTrack').style.transform = `translateX(-${index * 100}%)`;
-        }, 4000);
+        }
     </script>
 </body>
 </html>
