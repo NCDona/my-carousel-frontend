@@ -6,32 +6,27 @@
     <title>何冠霖 ＆ 楊念臻 ｜ 極光之約</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 加入 Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     
     <style>
+        /* ... 前面樣式保持不變 ... */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Montserrat', 'Noto Serif TC', serif; background-color: #faf7f2; color: #4a3e3d; line-height: 1.8; overflow-x: hidden; }
         
-        /* 滿版 Header */
         header { width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(224, 203, 189, 0.3); background: #faf7f2; }
         .logo { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 600; color: #b18f6a; text-decoration: none; }
         nav { display: flex; gap: 30px; }
         nav a { text-decoration: none; color: #726259; font-size: 14px; font-weight: 500; transition: color 0.3s; }
         nav a:hover { color: #b18f6a; }
-
-        /* 內容容器 */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        
-        /* 滿版封面 (姓名與標語整合) */
         .hero-section { position: relative; width: 100%; height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./pic6.jpg') center/cover no-repeat; z-index: -1; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.35); z-index: 0; }
         .hero-content { position: relative; z-index: 1; padding: 20px; }
-        
         .hero-names { font-family: 'Noto Serif TC', serif; font-size: 2.5rem; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         .hero-tagline { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 6px; margin-bottom: 10px; opacity: 0.9; }
         .hero-sub { font-family: 'Noto Serif TC', serif; font-size: 1.8rem; letter-spacing: 3px; }
-
-        /* 故事與相簿樣式維持不變 */
         .section-title { font-size: 22px; margin: 40px 0 20px; text-align: center; color: #5c4a42; }
         .story-card { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 20px; border: 1px solid rgba(228, 203, 189, 0.3); }
         .story-info { display: flex; flex-direction: column; gap: 15px; padding-bottom: 20px; border-bottom: 1px solid rgba(228, 203, 189, 0.3); margin-bottom: 20px; }
@@ -41,16 +36,18 @@
         .story-frame { width: 100%; height: 250px; margin-top: 20px; border-radius: 12px; overflow: hidden; }
         .story-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .gallery-header { position: relative; display: flex; justify-content: center; align-items: center; margin: 40px 0 20px; }
-        .gallery-nav-icons { position: absolute; right: 0; display: flex; gap: 15px; color: #b18f6a; cursor: pointer; font-size: 18px; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 40px; }
-        .gallery-item { border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        /* 相簿 Slider 樣式 */
+        .gallery-container { position: relative; margin-bottom: 60px; padding: 0 40px; }
+        .swiper { width: 100%; padding: 20px 0; }
+        .swiper-slide { border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* 自訂箭頭顏色 */
+        .swiper-button-next, .swiper-button-prev { color: #b18f6a !important; }
 
         @media (min-width: 768px) {
             .story-card { display: grid; grid-template-columns: 250px 1fr 250px; gap: 30px; align-items: center; }
             .story-info { border-bottom: none; border-right: 1px solid rgba(228, 203, 189, 0.3); padding-right: 20px; }
-            .gallery-grid { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
 </head>
@@ -76,45 +73,58 @@
 
     <div class="container">
         <section id="story">
+            <!-- 故事內容不變 -->
             <h2 class="section-title">我們的故事</h2>
             <div class="story-card">
                 <div class="story-info">
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-heart"></i></div>
-                        <div class="info-text"><p style="font-size: 16px; font-weight: 600;">何冠霖 ＆ 楊念臻</p></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                        <div class="info-text"><h4>登記紀念日</h4><p>2026 / 09 / 19</p></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-gift"></i></div>
-                        <div class="info-text"><h4>分享喜悅</h4><p>卡柏蒂 CUPETIT<br><span style="color: #b18f6a;">&lt;極光之約&gt;</span></p></div>
-                    </div>
+                    <div class="info-item"><div class="info-icon"><i class="fa-solid fa-heart"></i></div><div class="info-text"><p style="font-size: 16px; font-weight: 600;">何冠霖 ＆ 楊念臻</p></div></div>
+                    <div class="info-item"><div class="info-icon"><i class="fa-solid fa-calendar-days"></i></div><div class="info-text"><h4>登記紀念日</h4><p>2026 / 09 / 19</p></div></div>
+                    <div class="info-item"><div class="info-icon"><i class="fa-solid fa-gift"></i></div><div class="info-text"><h4>分享喜悅</h4><p>卡柏蒂 CUPETIT<br><span style="color: #b18f6a;">&lt;極光之約&gt;</span></p></div></div>
                 </div>
-                <div class="story-content">
-                    <p>人們說，看見極光就會幸福一輩子。於是在阿拉斯加的極光見證下，我們許下了一生的承諾。<br><br>這份喜餅承載著我們的浪漫，願與您分享這份遠自天際的幸福與美好。</p>
-                </div>
+                <div class="story-content"><p>人們說，看見極光就會幸福一輩子。於是在阿拉斯加的極光見證下，我們許下了一生的承諾。<br><br>這份喜餅承載著我們的浪漫，願與您分享這份遠自天際的幸福與美好。</p></div>
                 <div class="story-frame"><img src="./pic5.jpg" alt="故事照"></div>
             </div>
         </section>
 
+        <!-- 修改後的相簿區域 -->
         <section id="gallery">
-            <div class="gallery-header">
-                <h2 class="section-title">浪漫相簿</h2>
-                <div class="gallery-nav-icons">
-                    <i class="fa-solid fa-angles-left"></i> 
-                    <i class="fa-solid fa-play"></i>
+            <h2 class="section-title">相簿</h2>
+            <div class="gallery-container">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="./pic1.jpg" alt="1"></div>
+                        <div class="swiper-slide"><img src="./pic2.jpg" alt="2"></div>
+                        <div class="swiper-slide"><img src="./pic3.jpg" alt="3"></div>
+                        <div class="swiper-slide"><img src="./pic4.jpg" alt="4"></div>
+                        <div class="swiper-slide"><img src="./pic5.jpg" alt="5"></div>
+                        <div class="swiper-slide"><img src="./pic6.jpg" alt="6"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="./pic1.jpg" alt="1"></div>
-                <div class="gallery-item"><img src="./pic2.jpg" alt="2"></div>
-                <div class="gallery-item"><img src="./pic3.jpg" alt="3"></div>
-                <div class="gallery-item"><img src="./pic4.jpg" alt="4"></div>
+                <!-- 箭頭導航 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </section>
     </div>
 
+    <!-- 加入 Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            slidesPerView: 2, // 手機版顯示2張
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 4, // 桌機版顯示4張
+                    spaceBetween: 20
+                }
+            }
+        });
+    </script>
 </body>
 </html>
