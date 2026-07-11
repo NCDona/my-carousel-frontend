@@ -3,433 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>何冠霖 ＆ 楊念臻 ｜ 極光之約</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>何冠霖 ＆ 楊念臻 ｜ 溫馨極光之約</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', 'Noto Serif TC', serif; background-color: #faf7f2; color: #4a3e3d; line-height: 1.8; overflow-x: hidden; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+        
+        /* 手機版 Header */
+        header { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(224, 203, 189, 0.3); }
+        .logo { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 600; color: #b18f6a; text-decoration: none; }
+        nav { display: flex; gap: 15px; }
+        nav a { text-decoration: none; color: #726259; font-size: 13px; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        .hero-section { text-align: center; margin: 40px 0; }
+        .hero-carousel { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; position: relative; border: 4px solid #fff; }
+        .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease; }
+        .carousel-slide { min-width: 100%; height: 100%; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        body {
-            font-family: 'Montserrat', 'Noto Serif TC', serif;
-            background-color: #faf7f2;
-            color: #4a3e3d;
-            overflow-x: hidden;
-            line-height: 1.8;
-        }
+        /* 手機版故事卡片 */
+        .section-title { font-size: 22px; margin: 40px 0 20px; text-align: center; }
+        .story-card { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 20px; border: 1px solid rgba(228, 203, 189, 0.3); }
+        .story-info { display: flex; flex-direction: column; gap: 15px; padding-bottom: 20px; border-bottom: 1px solid rgba(228, 203, 189, 0.3); margin-bottom: 20px; }
+        .info-item { display: flex; align-items: center; gap: 12px; }
+        .info-icon { color: #b18f6a; width: 25px; }
+        .info-text h4 { font-size: 11px; color: #a8998a; text-transform: uppercase; }
+        .info-text p { font-size: 14px; color: #5c4a42; }
+        
+        .story-frame { width: 100%; height: 250px; margin-top: 20px; border-radius: 12px; overflow: hidden; }
+        .story-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .aurora-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1200px;
-            background: radial-gradient(circle at 50% -100px, rgba(244, 219, 212, 0.45) 0%, rgba(228, 239, 233, 0.4) 50%, rgba(250, 247, 242, 0) 100%);
-            z-index: 0;
-            pointer-events: none;
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 40px; }
+        .gallery-item { border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            padding: 25px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(224, 203, 189, 0.3);
-            margin-bottom: 40px;
-        }
-
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: #b18f6a;
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            font-size: 18px;
-            font-weight: 300;
-            color: #d8bfa7;
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #726259;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        .hero-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .main-title-container {
-            margin-bottom: 30px;
-        }
-
-        .main-title-container h1 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 38px;
-            color: #5c4a42;
-            letter-spacing: 3px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .main-title-container .tagline {
-            font-family: 'Cinzel', serif;
-            font-size: 16px;
-            color: #b18f6a;
-            letter-spacing: 5px;
-        }
-
-        .hero-carousel {
-            width: 100%;
-            height: 520px;
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(186, 172, 161, 0.2);
-            border: 6px solid #ffffff;
-        }
-
-        .carousel-track {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(5px);
-            color: #726259;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-prev { left: 20px; }
-        .btn-next { right: 20px; }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background: #ffffff;
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        .section-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 26px;
-            text-align: center;
-            color: #5c4a42;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-        }
-
-        .story-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(228, 203, 189, 0.5);
-            border-radius: 24px;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 280px 1fr 280px;
-            gap: 40px;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(186, 172, 161, 0.1);
-            margin-bottom: 80px;
-        }
-
-        .story-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            border-right: 1px solid rgba(228, 203, 189, 0.4);
-            padding-right: 20px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .info-icon {
-            color: #b18f6a;
-            font-size: 20px;
-            width: 30px;
-            text-align: center;
-        }
-
-        .info-text h4 {
-            font-size: 12px;
-            color: #a8998a;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
-
-        .info-text p {
-            font-size: 16px;
-            color: #5c4a42;
-            font-weight: 500;
-        }
-
-        .story-content {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 16px;
-            color: #5c4a42;
-            line-height: 2.1;
-        }
-
-        .story-content p {
-            margin-bottom: 15px;
-        }
-
-        .story-frame {
-            width: 100%;
-            height: 320px;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(228, 203, 189, 0.5);
-            padding: 10px;
-            background-color: #ffffff;
-        }
-
-        .story-frame-inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .story-frame-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            cursor: pointer;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 80px;
-        }
-
-        .gallery-item {
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 4/5;
-            cursor: pointer;
-            border: 4px solid #ffffff;
-            box-shadow: 0 8px 20px rgba(186, 172, 161, 0.08);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        footer {
-            text-align: center;
-            padding: 60px 0 80px;
-            border-top: 1px solid rgba(224, 203, 189, 0.4);
-        }
-
-        .footer-date {
-            font-family: 'Cinzel', serif;
-            font-size: 36px;
-            font-weight: 600;
-            color: #5c4a42;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-        }
-
-        .footer-thank {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 15px;
-            color: #8c786c;
-        }
-
-        .lightbox {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(74, 62, 61, 0.95);
-            z-index: 1000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(8px);
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 85%;
-            max-height: 80%;
-            position: relative;
-            border: 6px solid #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .lightbox-img {
-            max-width: 100%;
-            max-height: 75vh;
-            display: block;
-            object-fit: contain;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -45px; right: 0;
-            color: #ffffff;
-            font-size: 32px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.15);
-            border: none;
-            color: #ffffff;
-            width: 50px; height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-prev { left: 4%; }
-        .lightbox-next { right: 4%; }
-
-        @media (max-width: 992px) {
-            .story-card { grid-template-columns: 1fr; }
-            .story-info { border-right: none; border-bottom: 1px solid rgba(228, 203, 189, 0.4); padding-bottom: 20px; }
-        }
-        @media (max-width: 768px) {
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            header { display: none; }
+        @media (min-width: 768px) {
+            .hero-carousel { height: 500px; }
+            .story-card { display: grid; grid-template-columns: 250px 1fr 250px; gap: 30px; align-items: center; }
+            .story-info { border-bottom: none; border-right: 1px solid #ddd; padding-bottom: 0; }
+            .gallery-grid { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
 </head>
 <body>
 
-    <div class="aurora-bg"></div>
-
     <div class="container">
-        
         <header>
             <a href="#" class="logo">K <span>&</span> N</a>
             <nav>
-                <a href="#story">我們的故事</a>
+                <a href="#story">故事</a>
                 <a href="#gallery">相簿</a>
-                <a href="#date">結婚日期</a>
             </nav>
         </header>
 
         <section class="hero-section">
-            <div class="main-title-container">
-                <h1>何冠霖 ＆ 楊念臻</h1>
-                <div class="tagline">UNDER THE AURORA, WE PROMISED</div>
-            </div>
-
             <div class="hero-carousel">
-                <button class="carousel-btn btn-prev" onclick="changeSlide(-1)">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
                 <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide"><img src="./pic1.jpg" alt="極光之約 1"></div>
-                    <div class="carousel-slide"><img src="./pic2.jpg" alt="極光之約 2"></div>
-                    <div class="carousel-slide"><img src="./pic3.jpg" alt="極光之約 3"></div>
-                    <div class="carousel-slide"><img src="./pic4.jpg" alt="極光之約 4"></div>
-                </div>
-                <button class="carousel-btn btn-next" onclick="changeSlide(1)">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-                
-                <div class="carousel-dots">
-                    <div class="dot active" onclick="goToSlide(0)"></div>
-                    <div class="dot" onclick="goToSlide(1)"></div>
-                    <div class="dot" onclick="goToSlide(2)"></div>
-                    <div class="dot" onclick="goToSlide(3)"></div>
+                    <div class="carousel-slide"><img src="./pic1.jpg" alt="1"></div>
+                    <div class="carousel-slide"><img src="./pic2.jpg" alt="2"></div>
+                    <div class="carousel-slide"><img src="./pic3.jpg" alt="3"></div>
+                    <div class="carousel-slide"><img src="./pic4.jpg" alt="4"></div>
                 </div>
             </div>
         </section>
@@ -439,124 +75,48 @@
             <div class="story-card">
                 <div class="story-info">
                     <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-hashtag"></i></div>
-                        <div class="info-text">
-                            <h4>Wedding Hashtag</h4>
-                            <p>#何冠霖 ＆ 楊念臻</p>
-                        </div>
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-text"><h4>求婚地點</h4><p>美國阿拉斯加 🌌</p></div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                        <div class="info-text">
-                            <h4>結婚日期</h4>
-                            <p>2026 / 09 / 19</p>
-                        </div>
+                        <div class="info-text"><h4>登記紀念日</h4><p>2026 / 09 / 19</p></div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon"><i class="fa-solid fa-gift"></i></div>
                         <div class="info-text">
                             <h4>分享喜悅</h4>
-                            <p style="line-height: 1.4; margin-top: 5px;">
+                            <p style="line-height: 1.4;">
                                 卡柏蒂 CUPETIT<br>
-                                <span style="font-size: 0.9em; color: #b18f6a;">&lt;極光之約&gt;</span>
+                                <span style="color: #b18f6a;">&lt;極光之約&gt;</span>
                             </p>
                         </div>
                     </div>
                 </div>
-
                 <div class="story-content">
-                    <p>那一天，在北國浩瀚閃耀、充滿幸福色彩的極光之下，他許下了守護一生的承諾；在絢爛的光芒與群星見證中，她點了頭。</p>
-                    <p>這盒精挑細選的喜餅，承載著我們專屬的「極光之約」，將這份遠自天際的璀璨浪漫、真摯溫暖與無比幸福，親手傳遞給在我們生命中無比珍貴的您。</p>
+                    <p>在北國極光下，我們許下了一生的承諾。這份喜餅承載著我們的浪漫，願與您分享這份遠自天際的幸福。</p>
                 </div>
-
-                <div class="story-frame">
-                    <div class="story-frame-inner">
-                        <img src="./pic5.jpg" alt="求婚故事照" onclick="openLightbox(4)">
-                    </div>
-                </div>
+                <div class="story-frame"><img src="./pic5.jpg" alt="故事照"></div>
             </div>
         </section>
 
         <section id="gallery">
-            <h2 class="section-title">浪漫相簿集</h2>
+            <h2 class="section-title">浪漫相簿</h2>
             <div class="gallery-grid">
-                <div class="gallery-item" onclick="openLightbox(0)"><img src="./pic1.jpg" alt="相簿 1"></div>
-                <div class="gallery-item" onclick="openLightbox(1)"><img src="./pic2.jpg" alt="相簿 2"></div>
-                <div class="gallery-item" onclick="openLightbox(2)"><img src="./pic3.jpg" alt="相簿 3"></div>
-                <div class="gallery-item" onclick="openLightbox(3)"><img src="./pic4.jpg" alt="相簿 4"></div>
+                <div class="gallery-item"><img src="./pic1.jpg" alt="1"></div>
+                <div class="gallery-item"><img src="./pic2.jpg" alt="2"></div>
+                <div class="gallery-item"><img src="./pic3.jpg" alt="3"></div>
+                <div class="gallery-item"><img src="./pic4.jpg" alt="4"></div>
             </div>
         </section>
-
-        <footer id="date">
-            <div class="footer-date">2026 . 09 . 19</div>
-            <div class="footer-thank">我們結婚了！誠摯感謝您的陪伴與滿滿祝福 ✨</div>
-        </footer>
-
-    </div>
-
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
-            <img class="lightbox-img" id="lightboxImg" src="" alt="放大照片">
-        </div>
-        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
     </div>
 
     <script>
-        const track = document.getElementById('carouselTrack');
-        const dots = document.querySelectorAll('.dot');
-        let carouselIndex = 0;
-        let autoPlayTimer;
-
-        function updateCarousel() {
-            track.style.transform = `translateX(${-carouselIndex * 100}%)`;
-            dots.forEach((dot, idx) => dot.classList.toggle('active', idx === carouselIndex));
-        }
-
-        function changeSlide(dir) {
-            carouselIndex = (carouselIndex + dir + 4) % 4;
-            updateCarousel();
-            resetAutoPlay();
-        }
-
-        function goToSlide(idx) {
-            carouselIndex = idx;
-            updateCarousel();
-            resetAutoPlay();
-        }
-
-        function startAutoPlay() { autoPlayTimer = setInterval(() => changeSlide(1), 5000); }
-        function resetAutoPlay() { clearInterval(autoPlayTimer); startAutoPlay(); }
-        startAutoPlay();
-
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        let activeImgIndex = 0;
-        const images = ['./pic1.jpg', './pic2.jpg', './pic3.jpg', './pic4.jpg', './pic5.jpg'];
-
-        function openLightbox(idx) {
-            activeImgIndex = idx;
-            lightboxImg.src = images[idx];
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function navigateLightbox(dir) {
-            activeImgIndex = (activeImgIndex + dir + 5) % 5;
-            lightboxImg.src = images[activeImgIndex];
-        }
-
-        lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+        let index = 0;
+        setInterval(() => {
+            index = (index + 1) % 4;
+            document.getElementById('carouselTrack').style.transform = `translateX(-${index * 100}%)`;
+        }, 4000);
     </script>
 </body>
 </html>
