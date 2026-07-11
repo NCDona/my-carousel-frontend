@@ -19,19 +19,26 @@
         nav a { text-decoration: none; color: #726259; font-size: 13px; }
 
         .hero-section { text-align: center; margin: 40px 0; }
-        .hero-carousel { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; position: relative; border: 4px solid #fff; }
+        .main-title h1 { font-family: 'Noto Serif TC', serif; font-size: 32px; color: #5c4a42; margin-bottom: 10px; }
+        .tagline { font-family: 'Cinzel', serif; font-size: 14px; color: #b18f6a; letter-spacing: 3px; }
+        
+        /* 斷行控制 */
+        .mobile-break { display: inline; }
+        @media (max-width: 768px) { .mobile-break { display: block; } }
+
+        .hero-carousel { width: 100%; height: 300px; border-radius: 20px; overflow: hidden; position: relative; border: 4px solid #fff; margin-top: 20px; }
         .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease; }
         .carousel-slide { min-width: 100%; height: 100%; }
         .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 手機版故事卡片 */
-        .section-title { font-size: 22px; margin: 40px 0 20px; text-align: center; }
+        /* 故事卡片 */
+        .section-title { font-size: 22px; margin: 40px 0 20px; text-align: center; color: #5c4a42; }
         .story-card { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 20px; border: 1px solid rgba(228, 203, 189, 0.3); }
         .story-info { display: flex; flex-direction: column; gap: 15px; padding-bottom: 20px; border-bottom: 1px solid rgba(228, 203, 189, 0.3); margin-bottom: 20px; }
         .info-item { display: flex; align-items: center; gap: 12px; }
         .info-icon { color: #b18f6a; width: 25px; }
         .info-text h4 { font-size: 11px; color: #a8998a; text-transform: uppercase; }
-        .info-text p { font-size: 14px; color: #5c4a42; }
+        .info-text p { font-size: 14px; color: #5c4a42; font-weight: 500; }
         
         .story-frame { width: 100%; height: 250px; margin-top: 20px; border-radius: 12px; overflow: hidden; }
         .story-frame img { width: 100%; height: 100%; object-fit: cover; }
@@ -43,7 +50,7 @@
         @media (min-width: 768px) {
             .hero-carousel { height: 500px; }
             .story-card { display: grid; grid-template-columns: 250px 1fr 250px; gap: 30px; align-items: center; }
-            .story-info { border-bottom: none; border-right: 1px solid #ddd; padding-bottom: 0; }
+            .story-info { border-bottom: none; border-right: 1px solid rgba(228, 203, 189, 0.3); padding-bottom: 0; margin-bottom: 0; padding-right: 20px; }
             .gallery-grid { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
@@ -60,6 +67,8 @@
         </header>
 
         <section class="hero-section">
+            <div class="main-title"><h1>何冠霖 ＆ 楊念臻</h1></div>
+            <div class="tagline">UNDER THE AURORA, <span class="mobile-break"></span> WE PROMISED</div>
             <div class="hero-carousel">
                 <div class="carousel-track" id="carouselTrack">
                     <div class="carousel-slide"><img src="./pic1.jpg" alt="1"></div>
@@ -86,7 +95,7 @@
                         <div class="info-icon"><i class="fa-solid fa-gift"></i></div>
                         <div class="info-text">
                             <h4>分享喜悅</h4>
-                            <p style="line-height: 1.4;">
+                            <p style="line-height: 1.4; margin-top: 2px;">
                                 卡柏蒂 CUPETIT<br>
                                 <span style="color: #b18f6a;">&lt;極光之約&gt;</span>
                             </p>
@@ -94,7 +103,7 @@
                     </div>
                 </div>
                 <div class="story-content">
-                    <p>在北國極光下，我們許下了一生的承諾。這份喜餅承載著我們的浪漫，願與您分享這份遠自天際的幸福。</p>
+                    <p>在北國極光下，我們許下了一生的承諾。這份喜餅承載著我們的浪漫，願與您分享這份遠自天際的幸福與美好。</p>
                 </div>
                 <div class="story-frame"><img src="./pic5.jpg" alt="故事照"></div>
             </div>
