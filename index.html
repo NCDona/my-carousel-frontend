@@ -3,76 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的前後端分離輪播首頁</title>
+    <title>我的專屬輪播圖</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; text-align: center; }
-        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-        /* 輪播圖外框 */
-        .carousel-container { position: relative; width: 100%; height: 400px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: #ddd; }
-        .carousel-slide { display: none; width: 100%; height: 100%; position: relative; }
-        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-        .carousel-caption { position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.6); color: #fff; padding: 10px 20px; border-radius: 5px; }
-        .active { display: block; }
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
+        .carousel-container { width: 80%; max-width: 800px; height: 500px; border: 5px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); overflow: hidden; position: relative; border-radius: 15px; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; height: 100%; }
+        .carousel-slide { min-width: 100%; height: 100%; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; } /* 確保照片填滿，不變形 */
+        .btn-prev, .btn-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; font-size: 2rem; cursor: pointer; padding: 10px; z-index: 10; transition: background 0.3s; border-radius: 5px; }
+        .btn-prev:hover, .btn-next:hover { background: rgba(0,0,0,0.8); }
+        .btn-prev { left: 15px; }
+        .btn-next { right: 15px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>歡迎光臨我的動態網站</h1>
-        <p>下方的輪播圖圖片網址是由遠端後端 API 即時提供的：</p>
-        
-        <div class="carousel-container" id="carousel">
-            <p style="padding-top: 180px;">圖片載入中...</p>
-        </div>
+<div class="carousel-container">
+    <button class="btn-prev" onclick="moveSlide(-1)">&#10094;</button>
+    <div class="carousel-track" id="track">
+        <!-- 💡 這裡就是關鍵！我已經改成抓你的四張專屬照片路徑了 -->
+        <div class="carousel-slide"><img src="pic1.jpg" alt="我的照片 1"></div>
+        <div class="carousel-slide"><img src="pic2.jpg" alt="我的照片 2"></div>
+        <div class="carousel-slide"><img src="pic3.jpg" alt="我的照片 3"></div>
+        <div class="carousel-slide"><img src="pic4.jpg" alt="我的照片 4"></div>
     </div>
+    <button class="btn-next" onclick="moveSlide(1)">&#10095;</button>
+</div>
 
-    <script>
-        // ⚠️ 注意：稍後部署完 Render 後，要把這裡改成你 Render 的真實網址
-        const BACKEND_URL = 'https://my-carousel-backend.onrender.com'; 
+<script>
+    const track = document.getElementById('track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
 
-        async function fetchCarousel() {
-            try {
-                // 向後端 API 拿資料
-                const response = await fetch(`${BACKEND_URL}/api/carousel`);
-                const data = await response.json();
-                
-                const carouselContainer = document.getElementById('carousel');
-                carouselContainer.innerHTML = ''; // 清空載入中文字
+    function moveSlide(direction) {
+        currentIndex = (currentIndex + direction + slides.length) % slides.length;
+        updateCarousel();
+    }
 
-                // 動態產生 HTML 結構
-                data.forEach((item, index) => {
-                    const slide = document.createElement('div');
-                    slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
-                    slide.innerHTML = `
-                        <img src="${item.url}" alt="${item.title}">
-                        <div class="carousel-caption">${item.title}</div>
-                    `;
-                    carouselContainer.appendChild(slide);
-                });
+    function updateCarousel() {
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+    }
 
-                // 啟動輪播切換邏輯
-                startCarousel();
-            } catch (error) {
-                console.error('抓取後端資料失敗:', error);
-                document.getElementById('carousel').innerHTML = '<p style="padding-top:180px; color:red;">無法連線至後端伺服器</p>';
-            }
-        }
+    // 自動輪播 (選用功能)
+    setInterval(() => moveSlide(1), 5000); // 每 5 秒自動跳下一張
+</script>
 
-        // 簡單的自動輪播切換 JS
-        function startCarousel() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            let currentIndex = 0;
-            if(slides.length <= 1) return;
-            
-            setInterval(() => {
-                slides[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % slides.length;
-                slides[currentIndex].classList.add('active');
-            }, 3000); // 每 3 秒切換一張
-        }
-
-        // 網頁開啟時執行
-        fetchCarousel();
-    </script>
 </body>
 </html>
