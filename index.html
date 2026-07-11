@@ -27,17 +27,17 @@
         .hero-names { font-family: 'Noto Serif TC', serif; font-size: 2.5rem; margin-bottom: 15px; }
         .hero-tagline { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 6px; opacity: 0.9; }
         .hero-sub { font-family: 'Noto Serif TC', serif; font-size: 1.8rem; margin-top: 10px; }
-        
-        /* 故事區 */
+
+        /* 修正後的故事區 (Flex 排版確保穩定) */
         .section-title { font-size: 22px; margin: 40px 0 20px; text-align: center; color: #5c4a42; }
-        .story-card { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 20px; border: 1px solid rgba(228, 203, 189, 0.3); }
-        .story-info { display: flex; flex-direction: column; gap: 15px; padding-bottom: 20px; border-bottom: 1px solid rgba(228, 203, 189, 0.3); margin-bottom: 20px; }
+        .story-wrapper { display: flex; flex-direction: column; gap: 20px; background: rgba(255, 255, 255, 0.6); padding: 30px; border-radius: 20px; border: 1px solid rgba(228, 203, 189, 0.3); }
+        .story-info { display: flex; flex-direction: column; gap: 15px; }
         .info-item { display: flex; align-items: center; gap: 12px; }
-        .info-icon { color: #b18f6a; width: 25px; text-align: center; }
-        .info-text p { font-size: 14px; color: #5c4a42; font-weight: 500; }
-        .story-frame { width: 100%; height: 250px; margin-top: 20px; border-radius: 12px; overflow: hidden; }
+        .info-icon { color: #b18f6a; width: 25px; }
+        .story-text { line-height: 2; }
+        .story-frame { width: 100%; height: 250px; border-radius: 12px; overflow: hidden; }
         .story-frame img { width: 100%; height: 100%; object-fit: cover; }
-        
+
         /* 相簿 */
         .gallery-nav-icons { display: flex; gap: 15px; color: #b18f6a; cursor: pointer; font-size: 20px; }
         .gallery-wrapper { overflow: hidden; width: 100%; margin-bottom: 40px; }
@@ -73,27 +73,19 @@
     <div class="container">
         <section id="story">
             <h2 class="section-title">我們的故事</h2>
-            <div class="story-card">
+            <div class="story-wrapper">
                 <div class="story-info">
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-heart"></i></div>
-                        <div class="info-text"><p style="font-size: 16px; font-weight: 600;">何冠霖 ＆ 楊念臻</p></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-calendar-days"></i></div>
-                        <div class="info-text"><h4>登記紀念日</h4><p>2026 / 09 / 19</p></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-gift"></i></div>
-                        <div class="info-text"><h4>分享喜悅</h4><p>卡柏蒂 CUPETIT<br><span style="color: #b18f6a;">&lt;極光之約&gt;</span></p></div>
-                    </div>
+                    <div class="info-item"><div class="info-icon"><i class="fa-solid fa-heart"></i></div>何冠霖 ＆ 楊念臻</div>
+                    <div class="info-item"><div class="info-icon"><i class="fa-solid fa-calendar-days"></i></div>登記紀念日：2026/09/19</div>
+                    <div class="info-item"><div class="info-icon"><i class="fa-solid fa-gift"></i></div>卡柏蒂 &lt;極光之約&gt;</div>
                 </div>
-                <div class="story-content">
+                <div class="story-text">
                     <p>人們說，看見極光就會幸福一輩子。於是在阿拉斯加的極光見證下，我們許下了一生的承諾。<br><br>這份喜餅承載著我們的浪漫，願與您分享這份遠自天際的幸福與美好。</p>
                 </div>
                 <div class="story-frame"><img src="./pic5.jpg" alt="故事照"></div>
             </div>
         </section>
+
         <section id="gallery">
             <div style="display: flex; justify-content: space-between; align-items: center; margin: 40px 0 20px;">
                 <h2 class="section-title" style="margin:0">浪漫相簿</h2>
