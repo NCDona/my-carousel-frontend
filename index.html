@@ -6,14 +6,12 @@
     <title>何冠霖 ＆ 楊念臻 ｜ 極光之約</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- 加入 Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.css" />
     
     <style>
-        /* ... 前面樣式保持不變 ... */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Montserrat', 'Noto Serif TC', serif; background-color: #faf7f2; color: #4a3e3d; line-height: 1.8; overflow-x: hidden; }
-        
         header { width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(224, 203, 189, 0.3); background: #faf7f2; }
         .logo { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 600; color: #b18f6a; text-decoration: none; }
         nav { display: flex; gap: 30px; }
@@ -36,14 +34,20 @@
         .story-frame { width: 100%; height: 250px; margin-top: 20px; border-radius: 12px; overflow: hidden; }
         .story-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 相簿 Slider 樣式 */
+        /* 相簿 Slider 與 Lightbox 樣式 */
         .gallery-container { position: relative; margin-bottom: 60px; padding: 0 40px; }
         .swiper { width: 100%; padding: 20px 0; }
-        .swiper-slide { border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; }
-        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
         
-        /* 自訂箭頭顏色 */
+        /* 讓圖片連結具備滑鼠手勢 */
+        .gallery-item-link { display: block; border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; cursor: zoom-in; transition: transform 0.3s ease; }
+        .gallery-item-link:hover { transform: translateY(-5px); }
+        
+        .gallery-item-link img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
         .swiper-button-next, .swiper-button-prev { color: #b18f6a !important; }
+
+        /* SimpleLightbox 自訂樣式 (選用) */
+        .sl-overlay { background: rgba(74, 62, 61, 0.9) !important; } /* 調整背景遮罩顏色 */
 
         @media (min-width: 768px) {
             .story-card { display: grid; grid-template-columns: 250px 1fr 250px; gap: 30px; align-items: center; }
@@ -73,7 +77,6 @@
 
     <div class="container">
         <section id="story">
-            <!-- 故事內容不變 -->
             <h2 class="section-title">我們的故事</h2>
             <div class="story-card">
                 <div class="story-info">
@@ -86,36 +89,57 @@
             </div>
         </section>
 
-        <!-- 修改後的相簿區域 -->
         <section id="gallery">
             <h2 class="section-title">相簿</h2>
             <div class="gallery-container">
                 <div class="swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="./pic1.jpg" alt="1"></div>
-                        <div class="swiper-slide"><img src="./pic2.jpg" alt="2"></div>
-                        <div class="swiper-slide"><img src="./pic8.jpg" alt="3"></div>
-                         <div class="swiper-slide"><img src="./pic9.jpg" alt="4"></div>
-                        <div class="swiper-slide"><img src="./pic3.jpg" alt="5"></div>
-                        <div class="swiper-slide"><img src="./pic4.jpg" alt="6"></div>
-                        <div class="swiper-slide"><img src="./pic5.jpg" alt="7"></div>
-                        <div class="swiper-slide"><img src="./pic10.jpg" alt="8"></div>
-                        <div class="swiper-slide"><img src="./pic11.jpg" alt="9"></div>
+                        <div class="swiper-slide">
+                            <a href="./pic1.jpg" class="gallery-item-link" data-title="極光下的浪漫承諾">
+                                <img src="./pic1.jpg" alt="何冠霖與楊念臻婚紗照1">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="./pic2.jpg" class="gallery-item-link" data-title="雪地中的依偎">
+                                <img src="./pic2.jpg" alt="何冠霖與楊念臻婚紗照2">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="./pic3.jpg" class="gallery-item-link" data-title="幸福的笑容">
+                                <img src="./pic3.jpg" alt="何冠霖與楊念臻婚紗照3">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="./pic4.jpg" class="gallery-item-link" data-title="美麗的極光景色">
+                                <img src="./pic4.jpg" alt="何冠霖與楊念臻婚紗照4">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="./pic5.jpg" class="gallery-item-link" data-title="兩人合影">
+                                <img src="./pic5.jpg" alt="何冠霖與楊念臻婚紗照5">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="./pic6.jpg" class="gallery-item-link" data-title="極光之約主題">
+                                <img src="./pic6.jpg" alt="何冠霖與楊念臻婚紗照6">
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- 箭頭導航 -->
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
         </section>
     </div>
 
-    <!-- 加入 Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.js"></script>
+    
     <script>
+        // 1. 初始化 Swiper (輪播功能)
         const swiper = new Swiper('.swiper', {
             loop: true,
-            slidesPerView: 2, // 手機版顯示2張
+            slidesPerView: 2,
             spaceBetween: 10,
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -123,10 +147,20 @@
             },
             breakpoints: {
                 768: {
-                    slidesPerView: 4, // 桌機版顯示4張
+                    slidesPerView: 4,
                     spaceBetween: 20
                 }
             }
+        });
+
+        // 2. 初始化 SimpleLightbox (點擊放大功能)
+        // 選取所有擁有 .gallery-item-link 類別的連結
+        var lightbox = new SimpleLightbox('.gallery-container a.gallery-item-link', {
+            // 這裡是選用設定，讓燈箱體驗更好
+            captionsData: 'data-title', // 顯示圖片上方的標題 (抓取 <a> 標籤內的 data-title)
+            closeText: '關閉',
+            navText: ['←','→'],
+            loadingText: '載入中...',
         });
     </script>
 </body>
