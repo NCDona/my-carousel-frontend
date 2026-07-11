@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的前後端分離輪播首頁</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; text-align: center; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
+        /* 輪播圖外框 */
+        .carousel-container { position: relative; width: 100%; height: 400px; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: #ddd; }
+        .carousel-slide { display: none; width: 100%; height: 100%; position: relative; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .carousel-caption { position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.6); color: #fff; padding: 10px 20px; border-radius: 5px; }
+        .active { display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>歡迎光臨我的動態網站</h1>
+        <p>下方的輪播圖圖片網址是由遠端後端 API 即時提供的：</p>
+        
+        <div class="carousel-container" id="carousel">
+            <p style="padding-top: 180px;">圖片載入中...</p>
+        </div>
+    </div>
+
+    <script>
+        // ⚠️ 注意：稍後部署完 Render 後，要把這裡改成你 Render 的真實網址
+        const BACKEND_URL = 'https://my-carousel-backend.onrender.com'; 
+
+        async function fetchCarousel() {
+            try {
+                // 向後端 API 拿資料
+                const response = await fetch(`${BACKEND_URL}/api/carousel`);
+                const data = await response.json();
+                
+                const carouselContainer = document.getElementById('carousel');
+                carouselContainer.innerHTML = ''; // 清空載入中文字
+
+                // 動態產生 HTML 結構
+                data.forEach((item, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+                    slide.innerHTML = `
+                        <img src="${item.url}" alt="${item.title}">
+                        <div class="carousel-caption">${item.title}</div>
+                    `;
+                    carouselContainer.appendChild(slide);
+                });
+
+                // 啟動輪播切換邏輯
+                startCarousel();
+            } catch (error) {
+                console.error('抓取後端資料失敗:', error);
+                document.getElementById('carousel').innerHTML = '<p style="padding-top:180px; color:red;">無法連線至後端伺服器</p>';
+            }
+        }
+
+        // 簡單的自動輪播切換 JS
+        function startCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            let currentIndex = 0;
+            if(slides.length <= 1) return;
+            
+            setInterval(() => {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }, 3000); // 每 3 秒切換一張
+        }
+
+        // 網頁開啟時執行
+        fetchCarousel();
+    </script>
+</body>
+</html>
