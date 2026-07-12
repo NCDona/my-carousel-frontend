@@ -18,7 +18,6 @@
         .logo img { width: 40px; height: auto; display: block; }
 
         .mobile-break {display: none;}
-        /* 當螢幕寬度小於 768px 時顯示折行 (手機版換行) */
         @media (max-width: 767px) {.mobile-break {display: block;}}
         
         nav { display: flex; gap: 30px; }
@@ -77,19 +76,23 @@
            <div class="hero-tagline">UNDER THE AURORA.<br class="mobile-break"> WE PROMISED.</div>
         </div>
     </section>
-    <section id="announcement" style="margin: 60px 0;">
-        <div class="story-card" style="text-align: center; padding: 40px;">
-            <i class="fa-solid fa-gift" style="font-size: 30px; color: #b18f6a; margin-bottom: 20px; display: block;"></i>
-            <h3 style="font-family: 'Noto Serif TC', serif; font-size: 20px; color: #5c4a42; margin-bottom: 20px;">Sharing Our Joy</h3>
-            <p style="font-size: 15px; color: #726259; line-height: 1.8; max-width: 600px; margin: 0 auto;">
-                我們已於 2026 年 9 月 19 日完成結婚登記。<br>
-                選擇以簡約的方式邁向新階段，因此沒有舉辦婚宴。<br><br>
-                雖然沒有舉辦婚宴，但我們仍然想把這份甜蜜分享給最重視的你。<br>
-                希望這份心意也能讓你感受到我們滿滿的幸福。
-            </p>
-        </div>
-    </section>
+
     <div class="container">
+        <!-- 婚訊公告區塊 -->
+        <section id="announcement" style="margin: 60px 0;">
+            <div class="story-card" style="text-align: center; padding: 40px;">
+                <i class="fa-solid fa-gift" style="font-size: 30px; color: #b18f6a; margin-bottom: 20px; display: block;"></i>
+                <h3 style="font-family: 'Noto Serif TC', serif; font-size: 20px; color: #5c4a42; margin-bottom: 20px;">Sharing Our Joy</h3>
+                <p style="font-size: 15px; color: #726259; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+                    我們已於 2026 年 9 月 19 日完成結婚登記。<br>
+                    選擇以簡約的方式邁向新階段，因此沒有舉辦婚宴。<br><br>
+                    雖然沒有舉辦婚宴，但我們仍然想把這份甜蜜分享給最重視的你。<br>
+                    希望這份心意也能讓你感受到我們滿滿的幸福。
+                </p>
+            </div>
+        </section>
+
+        <!-- 我們的故事 -->
         <section id="story">
             <h2 class="section-title">極光之約</h2>
             <div class="story-card">
@@ -104,6 +107,7 @@
             </div>
         </section>
 
+        <!-- 相簿 -->
         <section id="gallery">
             <h2 class="section-title">相簿</h2>
             <div class="gallery-container">
@@ -130,12 +134,10 @@
         <a href="#" class="logo" style="display: block; margin-bottom: 20px;">
             <img src="./logo.png" alt="logo" style="display: block;">
         </a>
-
         <p style="font-size: 14px; opacity: 0.8; margin-bottom: 20px;">
         很開心能與你分享這份幸福的紀錄<br>
         2026.09.19 | Our Journey Begins
         </p>
-
         <a href="#logo" style="color: #b18f6a; text-decoration: none; font-size: 14px;">回到最上方 ↑</a>
     </footer>
 
