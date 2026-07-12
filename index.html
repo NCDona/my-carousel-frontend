@@ -16,6 +16,10 @@
         header { width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(224, 203, 189, 0.3); background: #faf7f2; }
         .logo { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 600; color: #b18f6a; text-decoration: none; }
         .logo img { width: 40px; height: auto; display: block; }
+
+        .mobile-break {display: none;}
+        /* 當螢幕寬度小於 768px 時顯示折行 (手機版換行) */
+        @media (max-width: 767px) {.mobile-break {display: block;}}
         
         nav { display: flex; gap: 30px; }
         nav a { text-decoration: none; color: #726259; font-size: 18px; font-weight: 600; transition: color 0.3s; letter-spacing: 1px; }
