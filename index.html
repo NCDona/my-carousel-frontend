@@ -119,7 +119,8 @@
             <h2 class="section-title">相簿</h2>
             <div class="gallery-container">
                 <div class="swiper">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper" id="swiper-wrapper"></div>
+                    <!--<div class="swiper-wrapper">
                         <div class="swiper-slide"><a href="./pic1.jpg" class="gallery-item-link" data-title="情侶照1"><img src="./pic1.jpg" alt="情侶照1"></a></div>
                         <div class="swiper-slide"><a href="./pic2.jpg" class="gallery-item-link" data-title="情侶照2"><img src="./pic2.jpg" alt="情侶照2"></a></div>
                         <div class="swiper-slide"><a href="./pic8.jpg" class="gallery-item-link" data-title="情侶照3"><img src="./pic8.jpg" alt="情侶照3"></a></div>
@@ -129,7 +130,7 @@
                         <div class="swiper-slide"><a href="./pic7.jpg" class="gallery-item-link" data-title="和服照3"><img src="./pic7.jpg" alt="和服照3"></a></div>
                         <div class="swiper-slide"><a href="./pic10.jpg" class="gallery-item-link" data-title="和服照4"><img src="./pic10.jpg" alt="和服照4"></a></div>
                         <div class="swiper-slide"><a href="./pic11.jpg" class="gallery-item-link" data-title="和服照5"><img src="./pic11.jpg" alt="和服照5"></a></div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
@@ -189,7 +190,8 @@
                 wrapper.innerHTML += `
                     <div class="swiper-slide">
                         <a href="./pic/${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
-                            <img src="./pic/${i}.jpg" alt="回憶 ${i}">
+                           //<img src="./pic/${i}.jpg" alt="回憶 ${i}">
+                              <img src="./${i}.jpg" alt="回憶 ${i}">
                         </a>
                     </div>`;
             }
