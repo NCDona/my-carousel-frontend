@@ -155,11 +155,11 @@
     // 自動生成 HTML
     for (let i = 1; i <= totalImages; i++) {
         wrapper.innerHTML += `
-            <div class="swiper-slide">
-                <a href="./pic/${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
-                    <img src="./pic/${i}.jpg" alt="回憶 ${i}">
-                </a>
-            </div>`;
+    <div class="swiper-slide">
+        <a href="./${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
+            <img src="./${i}.jpg" alt="回憶 ${i}">
+        </a>
+    </div>`;
     }
 
     // 初始化 Swiper
