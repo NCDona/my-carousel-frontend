@@ -1,190 +1,349 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>冠霖 ＆ 念臻 ｜ 極光之約</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.css" />
+
     
+
     <style>
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body { font-family: 'Montserrat', 'Noto Serif TC', serif; background-color: #faf7f2; color: #4a3e3d; line-height: 1.8; overflow-x: hidden; }
+
         
+
         header { width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(224, 203, 189, 0.3); background: #faf7f2; }
+
         .logo { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 600; color: #b18f6a; text-decoration: none; }
+
         .logo img { width: 40px; height: auto; display: block; }
 
+
+
         .mobile-break {display: none;}
+
         @media (max-width: 767px) {.mobile-break {display: block;}}
+
         
+
         nav { display: flex; gap: 30px; }
+
         nav a { text-decoration: none; color: #726259; font-size: 18px; font-weight: 600; transition: color 0.3s; letter-spacing: 1px; }
+
         nav a:hover { color: #b18f6a; }
+
         
+
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
         .hero-section { position: relative; width: 100%; height: 75vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; }
+
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('./pic6.jpg') center/cover no-repeat; z-index: -1; }
+
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.35); z-index: 0; }
+
         .hero-content { position: relative; z-index: 1; padding: 20px; }
+
         .hero-names { font-family: 'Microsoft JhengHei', serif; font-size: 2.5rem; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+
         .hero-tagline { font-family: 'Cinzel', serif; font-size: 1.2rem; letter-spacing: 6px; margin-bottom: 10px; opacity: 0.9; }
+
         .hero-names i {font-size: 0.6em; display: inline-block;vertical-align: middle;}
+
         
+
         .section-title { font-size: 22px; margin: 40px 0 20px; text-align: center; color: #5c4a42; }
+
         
+
         .story-card { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 20px; border: 1px solid rgba(228, 203, 189, 0.3); }
+
         #announcement .story-card { display: block; text-align: center; padding: 40px 20px; }
+
         #announcement .story-card i {margin: 0 auto 20px auto; font-size: 35px; color: #b18f6a; }
+
         
+
         .story-info { display: flex; flex-direction: column; gap: 15px; padding-bottom: 20px; border-bottom: 1px solid rgba(228, 203, 189, 0.3); margin-bottom: 20px; }
+
         .info-item { display: flex; align-items: center; gap: 12px; }
+
         .info-icon { color: #b18f6a; width: 25px; text-align: center; }
+
         .info-text p { font-size: 14px; color: #5c4a42; font-weight: 500; }
+
         .story-frame { width: 100%; height: 250px; margin-top: 20px; border-radius: 12px; overflow: hidden; }
+
         .story-frame img { width: 100%; height: 100%; object-fit: cover; }
 
+
+
         .gallery-container { position: relative; margin-bottom: 60px; padding: 0 40px; }
+
         .swiper { width: 100%; padding: 20px 0; }
+
         .gallery-item-link { display: block; border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; cursor: zoom-in; transition: transform 0.3s ease; }
+
         .gallery-item-link:hover { transform: translateY(-5px); }
+
         .gallery-item-link img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
         .swiper-button-next, .swiper-button-prev { color: #b18f6a !important; }
+
         .sl-overlay { background: rgba(74, 62, 61, 0.9) !important; }
 
+
+
        @media (min-width: 768px) {
+
             .story-card { display: grid; grid-template-columns: 250px 1fr 250px; gap: 30px; align-items: center; }
+
             .story-info { border-bottom: none; border-right: 1px solid rgba(228, 203, 189, 0.3); padding-right: 20px; display: flex;  flex-direction: column; justify-content: center;}
+
             .story-frame img { width: 100%; height: 100%; object-fit: cover; justify-content: center; display: block; }
+
         }
+
     </style>
+
 </head>
+
 <body>
 
+
+
     <header>
+
         <section id="logo">
+
             <a href="#" class="logo"><img src="./logo.png" alt="logo"></a>
+
         </section>
+
         <nav>
+
             <a href="#story">我們的故事</a>
+
             <a href="#gallery">相簿</a>
+
         </nav>
+
     </header>
 
+
+
     <section class="hero-section">
+
         <div class="hero-bg"></div>
+
         <div class="hero-overlay"></div>
+
         <div class="hero-content">
+
             <div class="hero-names">冠霖 <i class="fa-regular fa-heart"></i> 念臻</div>
+
             <div class="hero-tagline">UNDER THE AURORA.<br class="mobile-break"> WE PROMISED.</div>
+
         </div>
+
     </section>
 
+
+
     <div class="container">
+
         <section id="announcement" style="margin: 60px 0;">
+
             <div class="story-card">
+
                 <i class="fa-solid fa-champagne-glasses"></i>
+
                 <h3 style="font-family: 'Noto Serif TC', serif; font-size: 22px; color: #5c4a42; margin-bottom: 25px;">分享喜悅</h3>
+
                 <p style="font-size: 15px; color: #726259; line-height: 1.8; max-width: 500px; margin: 0 auto;">
+
                 我們已於 2026 年 9 月 19 日完成結婚登記。<br>
+
                 選擇以簡約的方式邁向新階段，因此沒有舉辦婚宴。<br>
+
                 雖然沒有宴客，但我們仍然想把這份甜蜜<br class="mobile-break">分享給最重視的你。<br>
+
                 希望這份心意也能讓你感受到我們滿滿的幸福。
+
                 </p>
+
             </div>
+
         </section>
+
+
 
         <section id="story">
+
             <h2 class="section-title">極光之約</h2>
+
             <div class="story-card">
+
                 <div class="story-info">
+
                     <div class="info-item"><div class="info-icon"><i class="fa-solid fa-heart"></i></div><div class="info-text"><p style="font-size: 16px; font-weight: 600;">冠霖 ＆ 念臻</p></div></div>
+
                     <div class="info-item"><div class="info-icon"><i class="fa-solid fa-calendar-days"></i></div><div class="info-text"><h4>結婚登記日</h4><p>2026 / 09 / 19</p></div></div>
+
                     <div class="info-item"><div class="info-icon"><i class="fa-solid fa-gift"></i></div><div class="info-text"><h4>關於禮盒</h4><p>卡柏蒂 CUPETIT<br><span style="color: #b18f6a;">&lt;極光之約&gt;禮盒</span></p></div></div>
+
                 </div>
+
                 <div class="story-content"><p>人們說，看見極光就會幸福一輩子。<br>在零下 30 多度的曠野中，<br>冷冽的空氣讓呼吸都凝結成霜。<br>寂靜且遼闊的極地裡，<br>世界彷彿只剩下彼此的呼吸聲。<br>
+
                     在極光的見證下，我們許下了一生的承諾<br>這不僅僅是一場追尋光的旅程，<br>更是我們邁向人生新階段的起點。<br>願與您分享這份遠自天際的幸福與美好。</p></div>
+
                 <div class="story-frame"><img src="./pic5.jpg" alt="故事照"></div>
+
             </div>
+
         </section>
+
+
 
         <section id="gallery">
+
             <h2 class="section-title">相簿</h2>
+
             <div class="gallery-container">
+
                 <div class="swiper">
+
                     <div class="swiper-wrapper">
+
                         <div class="swiper-slide"><a href="./pic1.jpg" class="gallery-item-link" data-title="情侶照1"><img src="./pic1.jpg" alt="情侶照1"></a></div>
+
                         <div class="swiper-slide"><a href="./pic2.jpg" class="gallery-item-link" data-title="情侶照2"><img src="./pic2.jpg" alt="情侶照2"></a></div>
+
                         <div class="swiper-slide"><a href="./pic8.jpg" class="gallery-item-link" data-title="情侶照3"><img src="./pic8.jpg" alt="情侶照3"></a></div>
+
                         <div class="swiper-slide"><a href="./pic9.jpg" class="gallery-item-link" data-title="情侶照4"><img src="./pic9.jpg" alt="情侶照4"></a></div>
+
                         <div class="swiper-slide"><a href="./pic3.jpg" class="gallery-item-link" data-title="和服照1"><img src="./pic3.jpg" alt="和服照1"></a></div>
+
                         <div class="swiper-slide"><a href="./pic4.jpg" class="gallery-item-link" data-title="和服照2"><img src="./pic4.jpg" alt="和服照2"></a></div>
+
                         <div class="swiper-slide"><a href="./pic7.jpg" class="gallery-item-link" data-title="和服照3"><img src="./pic7.jpg" alt="和服照3"></a></div>
+
                         <div class="swiper-slide"><a href="./pic10.jpg" class="gallery-item-link" data-title="和服照4"><img src="./pic10.jpg" alt="和服照4"></a></div>
+
                         <div class="swiper-slide"><a href="./pic11.jpg" class="gallery-item-link" data-title="和服照5"><img src="./pic11.jpg" alt="和服照5"></a></div>
+
                     </div>
+
                 </div>
+
                 <div class="swiper-button-prev"></div>
+
                 <div class="swiper-button-next"></div>
+
             </div>
+
         </section>
+
     </div>
 
+
+
     <footer style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 60px 20px; color: #726259; border-top: 1px solid rgba(224, 203, 189, 0.5); margin-top: 50px;">
+
         <a href="#" class="logo" style="display: block; margin-bottom: 20px;">
+
             <img src="./logo.png" alt="logo" style="display: block;">
+
         </a>
+
         <p style="font-size: 14px; opacity: 0.8; margin-bottom: 20px;">
+
         很開心能與你分享這份幸福的紀錄<br>
+
         2026.09.19 | Our Journey Begins<br>
+
         <span style="color: #ADADAD;">© 2026 | Built by Nien Chen</span>
+
         </p>
+
         <a href="#logo" style="color: #b18f6a; text-decoration: none; font-size: 14px;">回到最上方 ↑</a>
+
     </footer>
 
+
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.js"></script>
+
     
-   <script>
-    // --- 折衷方案設定 ---
-    const totalImages = 9; // <--- 這裡！你只要有幾張照片，就把這個數字改為多少即可
-    const wrapper = document.getElementById('swiper-wrapper');
 
-    // 自動生成 HTML
-    for (let i = 1; i <= totalImages; i++) {
-        wrapper.innerHTML += `
-    <div class="swiper-slide">
-        <a href="./${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
-            <img src="./${i}.jpg" alt="回憶 ${i}">
-        </a>
-    </div>`;
-    }
+    <script>
 
-    // 初始化 Swiper
-    const swiper = new Swiper('.swiper', {
-        loop: true,
-        slidesPerView: 2,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            768: {
-                slidesPerView: 4,
-                spaceBetween: 20
+        const swiper = new Swiper('.swiper', {
+
+            loop: true,
+
+            slidesPerView: 2,
+
+            spaceBetween: 10,
+
+            navigation: {
+
+                nextEl: '.swiper-button-next',
+
+                prevEl: '.swiper-button-prev',
+
+            },
+
+            breakpoints: {
+
+                768: {
+
+                    slidesPerView: 4,
+
+                    spaceBetween: 20
+
+                }
+
             }
-        }
-    });
 
-    // 初始化 Lightbox
-    var lightbox = new SimpleLightbox('.gallery-container a.gallery-item-link', {
-        captionsData: 'data-title',
-        closeText: '關閉',
-        navText: ['←','→'],
-        loadingText: '載入中...',
-    });
-</script>
+        });
+
+
+
+        var lightbox = new SimpleLightbox('.gallery-container a.gallery-item-link', {
+
+            captionsData: 'data-title',
+
+            closeText: '關閉',
+
+            navText: ['←','→'],
+
+            loadingText: '載入中...',
+
+        });
+
+    </script>
+
+</body>
+
 </html>
