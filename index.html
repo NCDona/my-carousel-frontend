@@ -147,29 +147,44 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.js"></script>
     
-    <script>
-        const swiper = new Swiper('.swiper', {
-            loop: true,
-            slidesPerView: 2,
-            spaceBetween: 10,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 4,
-                    spaceBetween: 20
-                }
-            }
-        });
+   <script>
+    // --- 折衷方案設定 ---
+    const totalImages = 9; // <--- 這裡！你只要有幾張照片，就把這個數字改為多少即可
+    const wrapper = document.getElementById('swiper-wrapper');
 
-        var lightbox = new SimpleLightbox('.gallery-container a.gallery-item-link', {
-            captionsData: 'data-title',
-            closeText: '關閉',
-            navText: ['←','→'],
-            loadingText: '載入中...',
-        });
-    </script>
-</body>
+    // 自動生成 HTML
+    for (let i = 1; i <= totalImages; i++) {
+        wrapper.innerHTML += `
+            <div class="swiper-slide">
+                <a href="./pic/${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
+                    <img src="./pic/${i}.jpg" alt="回憶 ${i}">
+                </a>
+            </div>`;
+    }
+
+    // 初始化 Swiper
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            }
+        }
+    });
+
+    // 初始化 Lightbox
+    var lightbox = new SimpleLightbox('.gallery-container a.gallery-item-link', {
+        captionsData: 'data-title',
+        closeText: '關閉',
+        navText: ['←','→'],
+        loadingText: '載入中...',
+    });
+</script>
 </html>
