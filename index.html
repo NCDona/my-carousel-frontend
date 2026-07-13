@@ -182,8 +182,7 @@
 
     <script>
         // 1. 自動渲染圖片迴圈
-        // 請確認根目錄下確實有 1.jpg 到 11.jpg
-        const totalImages = 11; 
+        const totalImages = 9; 
         const wrapper = document.getElementById('swiper-wrapper');
 
         if (wrapper) {
@@ -191,8 +190,8 @@
                 // 這裡的路徑已改為直接讀取根目錄
                 wrapper.innerHTML += `
                     <div class="swiper-slide">
-                        <a href="./pic${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
-                            <img src="./pic${i}.jpg" alt="回憶 ${i}">
+                        <a href="./pic/pic${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
+                            <img src="./pic/pic${i}.jpg" alt="回憶 ${i}">
                         </a>
                     </div>`;
             }
