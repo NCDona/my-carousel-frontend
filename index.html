@@ -182,22 +182,23 @@
 
     <script>
         // 1. 自動渲染圖片迴圈
-        const totalImages = 11; // <--- 請確保這裡的數字等於 pic 資料夾內的圖片總數
+        // 請確認根目錄下確實有 1.jpg 到 11.jpg
+        const totalImages = 11; 
         const wrapper = document.getElementById('swiper-wrapper');
 
         if (wrapper) {
             for (let i = 1; i <= totalImages; i++) {
+                // 這裡的路徑已改為直接讀取根目錄
                 wrapper.innerHTML += `
                     <div class="swiper-slide">
-                        <a href="./pic/${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
-                           //<img src="./pic/${i}.jpg" alt="回憶 ${i}">
-                              <img src="./${i}.jpg" alt="回憶 ${i}">
+                        <a href="./${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
+                            <img src="./${i}.jpg" alt="回憶 ${i}">
                         </a>
                     </div>`;
             }
         }
 
-        // 2. 初始化 Swiper (必須在圖片渲染之後)
+        // 2. 初始化 Swiper
         const swiper = new Swiper('.swiper', {
             loop: true,
             slidesPerView: 2,
@@ -214,7 +215,7 @@
             }
         });
 
-        // 3. 初始化 Lightbox (必須在圖片渲染之後)
+        // 3. 初始化 Lightbox
         var lightbox = new SimpleLightbox('.gallery-container a.gallery-item-link', {
             captionsData: 'data-title',
             closeText: '關閉',
@@ -222,5 +223,4 @@
             loadingText: '載入中...',
         });
     </script>
-</body>
 </html>
