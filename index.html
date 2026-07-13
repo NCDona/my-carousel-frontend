@@ -149,10 +149,53 @@
         <a href="#logo" style="color: #b18f6a; text-decoration: none; font-size: 14px;">回到最上方 ↑</a>
     </footer>
 
+    //<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    //<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.js"></script>
+
+    //<script>
+       // const swiper = new Swiper('.swiper', {
+           // loop: true,
+           // slidesPerView: 2,
+           // spaceBetween: 10,
+           // navigation: {
+               // nextEl: '.swiper-button-next',
+               // prevEl: '.swiper-button-prev',
+          //  },
+           // breakpoints: {
+               // 768: {
+                   // slidesPerView: 4,
+                    //spaceBetween: 20
+               // }
+           // }
+      //  });
+
+       // var lightbox = new SimpleLightbox('.gallery-container a.gallery-item-link', {
+           // captionsData: 'data-title',
+           // closeText: '關閉',
+           // navText: ['←','→'],
+            //loadingText: '載入中...',
+        //});
+    //</script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.0/simple-lightbox.min.js"></script>
 
     <script>
+        // 1. 自動渲染圖片迴圈
+        const totalImages = 9; // <--- 請確保這裡的數字等於 pic 資料夾內的圖片總數
+        const wrapper = document.getElementById('swiper-wrapper');
+
+        if (wrapper) {
+            for (let i = 1; i <= totalImages; i++) {
+                wrapper.innerHTML += `
+                    <div class="swiper-slide">
+                        <a href="./pic/${i}.jpg" class="gallery-item-link" data-title="回憶 ${i}">
+                            <img src="./pic/${i}.jpg" alt="回憶 ${i}">
+                        </a>
+                    </div>`;
+            }
+        }
+
+        // 2. 初始化 Swiper (必須在圖片渲染之後)
         const swiper = new Swiper('.swiper', {
             loop: true,
             slidesPerView: 2,
@@ -169,10 +212,11 @@
             }
         });
 
+        // 3. 初始化 Lightbox (必須在圖片渲染之後)
         var lightbox = new SimpleLightbox('.gallery-container a.gallery-item-link', {
             captionsData: 'data-title',
             closeText: '關閉',
-            navText: ['←','→'],
+            navText: ['←', '→'],
             loadingText: '載入中...',
         });
     </script>
